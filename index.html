@@ -14,15 +14,15 @@
 
 
     :root {
-        --primary: #4F46E5;
-        --secondary: #7C3AED;
+        --primary: #20B2AA;
+        --secondary: #2DD4BF;
         --accent: #06B6D4;
         --dark: #0F172A;
         --light: #F8FAFC;
         --gray: #64748B;
         --success: #10B981;
-        --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        --gradient-accent: linear-gradient(135deg, #06B6D4 0%, #4F46E5 100%);
+        --gradient-primary: linear-gradient(135deg, #20B2AA 0%, #2DD4BF 100%);
+        --gradient-accent: linear-gradient(135deg, #06B6D4 0%, #20B2AA 100%);
         --gradient-dark: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
     }
 
@@ -122,12 +122,12 @@
         color: white !important;
         border-radius: 50px;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2);
+        box-shadow: 0 4px 15px rgba(32, 178, 170, 0.2);
     }
 
     .nav-cta:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 25px rgba(79, 70, 229, 0.3);
+        box-shadow: 0 6px 25px rgba(32, 178, 170, 0.3);
     }
 
     /* Hero Section */
@@ -435,8 +435,8 @@
 
     .feature-card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 25px 50px rgba(79, 70, 229, 0.15);
-        border-color: rgba(79, 70, 229, 0.2);
+        box-shadow: 0 25px 50px rgba(32, 178, 170, 0.15);
+        border-color: rgba(32, 178, 170, 0.2);
     }
 
     .feature-icon {
@@ -534,7 +534,7 @@
 
     .play-btn:hover {
         transform: scale(1.1);
-        box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3);
+        box-shadow: 0 10px 30px rgba(32, 178, 170, 0.3);
     }
 
     .audio-info {
@@ -648,7 +648,7 @@
 
     .benefit-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 35px rgba(79, 70, 229, 0.15);
+        box-shadow: 0 15px 35px rgba(32, 178, 170, 0.15);
     }
 
     .benefit-icon {
@@ -739,7 +739,7 @@
 
     .submit-button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 15px 35px rgba(79, 70, 229, 0.3);
+        box-shadow: 0 15px 35px rgba(32, 178, 170, 0.3);
     }
 
     .contact-info {
@@ -827,8 +827,38 @@
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 400 400" style="margin-right: 0.5rem;">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#20B2AA;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#2DD4BF;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Hexagonal logo with flowing lines pattern -->
+                    <g transform="translate(200,200)">
+                        <!-- Outer hexagon -->
+                        <polygon points="-100,0 -50,-86.6 50,-86.6 100,0 50,86.6 -50,86.6" 
+                                fill="none" stroke="url(#logoGradient)" stroke-width="3"/>
+                        
+                        <!-- Inner flowing pattern -->
+                        <path d="M-80,-20 Q-40,-40 0,-20 Q40,-40 80,-20" 
+                              fill="none" stroke="url(#logoGradient)" stroke-width="4"/>
+                        <path d="M-80,20 Q-40,40 0,20 Q40,40 80,20" 
+                              fill="none" stroke="url(#logoGradient)" stroke-width="4"/>
+                        <path d="M-60,-40 Q0,-20 60,-40" 
+                              fill="none" stroke="url(#logoGradient)" stroke-width="3"/>
+                        <path d="M-60,40 Q0,20 60,40" 
+                              fill="none" stroke="url(#logoGradient)" stroke-width="3"/>
+                        <path d="M-40,0 Q0,-30 40,0 Q0,30 -40,0" 
+                              fill="none" stroke="url(#logoGradient)" stroke-width="4"/>
+                        
+                        <!-- Central elements -->
+                        <circle cx="0" cy="0" r="8" fill="url(#logoGradient)"/>
+                        <circle cx="-30" cy="0" r="4" fill="url(#logoGradient)"/>
+                        <circle cx="30" cy="0" r="4" fill="url(#logoGradient)"/>
+                    </g>
+                </svg>
                 <span>Scale It Up</span>
-                <span style="font-size: 1.2rem;">🚀</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
