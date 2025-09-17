@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Scale It Up - AI Solutions Through Expert Conversations</title>
     <style>
         * {
@@ -12,17 +11,17 @@
             box-sizing: border-box;
         }
 
-
     :root {
-        --primary: #4F46E5;
-        --secondary: #7C3AED;
-        --accent: #06B6D4;
+        /* Colors updated to match your logo teal */
+        --primary: #008086;        /* main teal */
+        --secondary: #00B3AD;      /* lighter teal */
+        --accent: #00E0D6;         /* accent */
         --dark: #0F172A;
         --light: #F8FAFC;
         --gray: #64748B;
         --success: #10B981;
-        --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        --gradient-accent: linear-gradient(135deg, #06B6D4 0%, #4F46E5 100%);
+        --gradient-primary: linear-gradient(135deg, #008086 0%, #00B3AD 100%);
+        --gradient-accent: linear-gradient(135deg, #00B3AD 0%, #008086 100%);
         --gradient-dark: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
     }
 
@@ -74,15 +73,24 @@
         align-items: center;
     }
 
+    /* Logo on left, nav on right (keeps original layout) */
     .logo {
-        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .logo-img {
+        height: 48px;
+        display: block;
+    }
+
+    .logo-text {
+        font-size: 1.25rem;
         font-weight: 800;
         background: var(--gradient-primary);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
     }
 
     .nav-links {
@@ -122,12 +130,12 @@
         color: white !important;
         border-radius: 50px;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2);
+        box-shadow: 0 4px 15px rgba(0, 128, 134, 0.18);
     }
 
     .nav-cta:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 25px rgba(79, 70, 229, 0.3);
+        box-shadow: 0 6px 25px rgba(0, 128, 134, 0.22);
     }
 
     /* Hero Section */
@@ -181,12 +189,12 @@
     }
 
     @keyframes float {
-        0%, 100% {
-            transform: translate(0, 0) scale(1);
+        0%, 100% { 
+            transform: translate(0, 0) scale(1); 
             opacity: 0.1;
         }
-        50% {
-            transform: translate(30px, -30px) scale(1.1);
+        50% { 
+            transform: translate(30px, -30px) scale(1.1); 
             opacity: 0.2;
         }
     }
@@ -302,7 +310,7 @@
     /* About Section */
     .about {
         padding: 6rem 5%;
-        background: linear-gradient(135deg, #F8FAFC 0%, #E0E7FF 100%);
+        background: linear-gradient(135deg, #F8FAFC 0%, #E0F7F7 100%);
     }
 
     .about-content {
@@ -426,7 +434,7 @@
 
     .feature-card {
         padding: 2.5rem;
-        background: linear-gradient(135deg, #F8FAFC 0%, #E0E7FF 50%, #F8FAFC 100%);
+        background: linear-gradient(135deg, #F8FAFC 0%, #E0F7F7 50%, #F8FAFC 100%);
         border-radius: 20px;
         text-align: center;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -435,8 +443,8 @@
 
     .feature-card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 25px 50px rgba(79, 70, 229, 0.15);
-        border-color: rgba(79, 70, 229, 0.2);
+        box-shadow: 0 25px 50px rgba(0, 128, 134, 0.12);
+        border-color: rgba(0, 128, 134, 0.12);
     }
 
     .feature-icon {
@@ -508,7 +516,7 @@
     }
 
     .audio-player {
-        background: linear-gradient(135deg, #F8FAFC 0%, #E0E7FF 100%);
+        background: linear-gradient(135deg, #F8FAFC 0%, #E0F7F7 100%);
         border-radius: 15px;
         padding: 2rem;
         display: flex;
@@ -534,7 +542,7 @@
 
     .play-btn:hover {
         transform: scale(1.1);
-        box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3);
+        box-shadow: 0 10px 30px rgba(0, 128, 134, 0.26);
     }
 
     .audio-info {
@@ -641,14 +649,14 @@
 
     .benefit-card {
         padding: 2rem;
-        background: linear-gradient(135deg, #F8FAFC 0%, #E0E7FF 100%);
+        background: linear-gradient(135deg, #F8FAFC 0%, #E0F7F7 100%);
         border-radius: 15px;
         transition: all 0.3s ease;
     }
 
     .benefit-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 35px rgba(79, 70, 229, 0.15);
+        box-shadow: 0 15px 35px rgba(0, 128, 134, 0.12);
     }
 
     .benefit-icon {
@@ -739,7 +747,7 @@
 
     .submit-button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 15px 35px rgba(79, 70, 229, 0.3);
+        box-shadow: 0 15px 35px rgba(0, 128, 134, 0.22);
     }
 
     .contact-info {
@@ -819,27 +827,26 @@
         }
     }
 </style>
-
-
 </head>
 <body>
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">
-                <span>Scale It Up</span>
-                <span style="font-size: 1.2rem;">🚀</span>
+                <!-- Logo image (place ScaleItUp.png in same folder as this HTML) -->
+                <img src="ScaleItUp.png" alt="Scale It Up logo" class="logo-img" />
+                <span class="logo-text">Scale It Up</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#podcast">Podcast</a></li>
                 <li><a href="#guest">Be a Guest</a></li>
-                <li><a href="#contact" class="nav-cta">Book a Call</a></li>
+                <!-- Nav CTA now goes to Calendly -->
+                <li><a href="https://calendly.com/chris-scaleitup/30min" target="_blank" rel="noopener noreferrer" class="nav-cta">Book a Call</a></li>
             </ul>
         </div>
     </nav>
-
 
 <!-- Hero Section -->
 <section id="home" class="hero">
@@ -848,12 +855,13 @@
         <div class="bg-circle"></div>
         <div class="bg-circle"></div>
     </div>
-   
+    
     <div class="hero-content">
         <h1>Transform Your Business with AI</h1>
         <p class="tagline">Discover the perfect AI solutions through engaging conversations and expert interviews with businesses just like yours</p>
         <div class="cta-container">
-            <a href="#contact" class="cta-button">Book Your Free Strategy Call</a>
+            <!-- Hero CTA now opens Calendly in a new tab -->
+            <a href="https://calendly.com/chris-scaleitup/30min" target="_blank" rel="noopener noreferrer" class="cta-button">Book Your Free Strategy Call</a>
             <a href="#podcast" class="cta-button cta-secondary">Listen to Success Stories</a>
         </div>
     </div>
@@ -958,12 +966,12 @@
 <section id="podcast" class="podcast">
     <h2 class="section-title">Latest Podcast Episodes</h2>
     <p class="section-subtitle">Real conversations with real businesses achieving real results</p>
-   
+    
     <div class="latest-episode">
         <span class="latest-badge">🎙️ Latest Episode</span>
         <h3 class="episode-title">How a Local Manufacturer Increased Productivity by 300% with AI</h3>
         <p class="episode-description">
-            In this week's episode, we dive deep into the transformation story of New England Manufacturing Co.,
+            In this week's episode, we dive deep into the transformation story of New England Manufacturing Co., 
             exploring how they implemented AI-driven quality control and predictive maintenance to revolutionize their operations.
         </p>
         <div class="audio-player">
@@ -1015,7 +1023,7 @@
 <section id="guest" class="guest-section">
     <h2 class="section-title">Share Your Story on Scale It Up</h2>
     <p class="section-subtitle">Join our podcast and inspire other business leaders</p>
-   
+    
     <div class="guest-benefits">
         <div class="benefit-card">
             <div class="benefit-icon">🎙️</div>
@@ -1038,7 +1046,7 @@
             <p>Receive personalized AI strategy insights for your business</p>
         </div>
     </div>
-   
+    
     <a href="#contact" class="cta-button" style="margin-top: 2rem;">Apply to Be a Guest</a>
 </section>
 
@@ -1047,7 +1055,7 @@
     <div class="contact-content">
         <h2>Let's Scale It Up Together</h2>
         <p>Ready to discover how AI can transform your business? Let's have a conversation.</p>
-       
+        
         <form class="contact-form">
             <div class="form-group">
                 <label for="name">Your Name</label>
@@ -1067,11 +1075,11 @@
             </div>
             <button type="submit" class="submit-button">Book Your Free Strategy Call</button>
         </form>
-       
+        
         <div class="contact-info">
             <p>Or reach out directly at:</p>
             <p style="font-size: 1.2rem; margin-top: 0.5rem;">
-                <strong>hello@scaleitup.org</strong>
+                <strong><a href="mailto:Chris@ScaleItUp.org" style="color: white; text-decoration: underline;">Chris@ScaleItUp.org</a></strong>
             </p>
         </div>
     </div>
@@ -1086,21 +1094,26 @@
             <a href="#guest">Be a Guest</a>
             <a href="#contact">Contact</a>
         </div>
-        <p>&copy; 2024 Scale It Up. Making AI Simple for Every Business.</p>
+        <p>&copy; 2024 Scale It Up. Making AI Simple for Every Business. | <a href="mailto:Chris@ScaleItUp.org" style="color: inherit;">Chris@ScaleItUp.org</a></p>
     </div>
 </footer>
 
 <script>
-    // Smooth scrolling for navigation links
+    // Smooth scrolling for navigation links (only anchors starting with #)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            // If the link's href is an in-page anchor, scroll smoothly.
+            // External links (calendly) are not intercepted.
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             }
         });
     });
@@ -1118,7 +1131,7 @@
     // Form submission handler
     document.querySelector('.contact-form').addEventListener('submit', (e) => {
         e.preventDefault();
-        alert('Thank you for your interest! We\'ll be in touch within 24 hours to schedule your strategy call.');
+        alert('Thank you for your interest! We\\'ll be in touch within 24 hours to schedule your strategy call.');
         e.target.reset();
     });
 
@@ -1197,7 +1210,6 @@
         }
     });
 </script>
-
 
 </body>
 </html>
