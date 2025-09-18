@@ -1,1215 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Scale It Up - AI Solutions Through Expert Conversations</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-    :root {
-        /* Colors updated to match your logo teal */
-        --primary: #008086;        /* main teal */
-        --secondary: #00B3AD;      /* lighter teal */
-        --accent: #00E0D6;         /* accent */
-        --dark: #0F172A;
-        --light: #F8FAFC;
-        --gray: #64748B;
-        --success: #10B981;
-        --gradient-primary: linear-gradient(135deg, #008086 0%, #00B3AD 100%);
-        --gradient-accent: linear-gradient(135deg, #00B3AD 0%, #008086 100%);
-        --gradient-dark: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
-    }
-
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-        line-height: 1.6;
-        color: var(--dark);
-        overflow-x: hidden;
-        background: var(--light);
-    }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: var(--light);
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: var(--gradient-primary);
-        border-radius: 5px;
-    }
-
-    /* Navigation */
-    nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        padding: 1.2rem 5%;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-        z-index: 1000;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    nav.scrolled {
-        padding: 0.8rem 5%;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-    }
-
-    .nav-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    /* Logo on left, nav on right (keeps original layout) */
-    .logo {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-
-    .logo-img {
-        height: 48px;
-        display: block;
-    }
-
-    .logo-text {
-        font-size: 1.25rem;
-        font-weight: 800;
-        background: var(--gradient-primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .nav-links {
-        display: flex;
-        list-style: none;
-        gap: 2.5rem;
-        align-items: center;
-    }
-
-    .nav-links a {
-        text-decoration: none;
-        color: var(--dark);
-        font-weight: 500;
-        transition: all 0.3s ease;
-        position: relative;
-        font-size: 0.95rem;
-    }
-
-    .nav-links a:after {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--gradient-primary);
-        transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover:after {
-        width: 100%;
-    }
-
-    .nav-cta {
-        padding: 0.7rem 1.8rem;
-        background: var(--gradient-primary);
-        color: white !important;
-        border-radius: 50px;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 128, 134, 0.18);
-    }
-
-    .nav-cta:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 25px rgba(0, 128, 134, 0.22);
-    }
-
-    /* Hero Section */
-    .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 5rem 5%;
-        background: var(--gradient-dark);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .animated-bg {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        opacity: 0.1;
-    }
-
-    .bg-circle {
-        position: absolute;
-        border-radius: 50%;
-        background: var(--gradient-primary);
-        animation: float 20s ease-in-out infinite;
-    }
-
-    .bg-circle:nth-child(1) {
-        width: 300px;
-        height: 300px;
-        top: -150px;
-        left: -150px;
-    }
-
-    .bg-circle:nth-child(2) {
-        width: 200px;
-        height: 200px;
-        bottom: -100px;
-        right: -100px;
-        animation-delay: -5s;
-    }
-
-    .bg-circle:nth-child(3) {
-        width: 400px;
-        height: 400px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        animation-delay: -10s;
-    }
-
-    @keyframes float {
-        0%, 100% { 
-            transform: translate(0, 0) scale(1); 
-            opacity: 0.1;
-        }
-        50% { 
-            transform: translate(30px, -30px) scale(1.1); 
-            opacity: 0.2;
-        }
-    }
-
-    .hero-content {
-        max-width: 1200px;
-        text-align: center;
-        color: white;
-        position: relative;
-        z-index: 1;
-    }
-
-    .hero h1 {
-        font-size: clamp(2.5rem, 5vw, 4.5rem);
-        margin-bottom: 1.5rem;
-        animation: fadeInUp 1s ease;
-        font-weight: 900;
-        line-height: 1.1;
-    }
-
-    .hero .tagline {
-        font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-        margin-bottom: 3rem;
-        opacity: 0.95;
-        animation: fadeInUp 1s ease 0.2s both;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-        color: rgba(255, 255, 255, 0.9);
-    }
-
-    .cta-container {
-        display: flex;
-        gap: 2rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        animation: fadeInUp 1s ease 0.4s both;
-    }
-
-    .cta-button {
-        padding: 1rem 2.5rem;
-        font-size: 1.1rem;
-        font-weight: 600;
-        background: white;
-        color: var(--primary);
-        border: none;
-        border-radius: 50px;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        cursor: pointer;
-        display: inline-block;
-    }
-
-    .cta-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .cta-secondary {
-        background: transparent;
-        color: white;
-        border: 2px solid white;
-        box-shadow: none;
-    }
-
-    .cta-secondary:hover {
-        background: rgba(255, 255, 255, 0.1);
-        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
-    }
-
-    /* Stats Bar */
-    .stats-bar {
-        padding: 4rem 5%;
-        background: white;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
-
-    .stats-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 3rem;
-        text-align: center;
-    }
-
-    .stat-item {
-        animation: fadeInUp 0.8s ease both;
-    }
-
-    .stat-item:nth-child(1) { animation-delay: 0.1s; }
-    .stat-item:nth-child(2) { animation-delay: 0.2s; }
-    .stat-item:nth-child(3) { animation-delay: 0.3s; }
-    .stat-item:nth-child(4) { animation-delay: 0.4s; }
-
-    .stat-number {
-        font-size: 2.5rem;
-        font-weight: 800;
-        background: var(--gradient-primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 0.5rem;
-    }
-
-    .stat-label {
-        color: var(--gray);
-        font-size: 0.95rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    /* About Section */
-    .about {
-        padding: 6rem 5%;
-        background: linear-gradient(135deg, #F8FAFC 0%, #E0F7F7 100%);
-    }
-
-    .about-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-    }
-
-    .about-text h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
-        background: var(--gradient-primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .about-text p {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: var(--dark);
-        margin-bottom: 1.5rem;
-    }
-
-    .about-visual {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .expertise-card {
-        background: white;
-        padding: 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        animation: floatCard 4s ease-in-out infinite;
-    }
-
-    @keyframes floatCard {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-    }
-
-    .expertise-card img {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        margin-bottom: 1.5rem;
-        background: var(--gradient-primary);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 3rem;
-        font-weight: bold;
-        margin: 0 auto 1.5rem;
-    }
-
-    .expertise-card h3 {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-        color: var(--dark);
-    }
-
-    .expertise-card p {
-        color: var(--gray);
-        font-size: 0.95rem;
-        margin-bottom: 1rem;
-    }
-
-    .credentials {
-        text-align: left;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    .credential-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 0.5rem;
-        color: var(--dark);
-        font-size: 0.9rem;
-    }
-
-    /* Features Section */
-    .features {
-        padding: 6rem 5%;
-        background: white;
-    }
-
-    .section-title {
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        background: var(--gradient-primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .section-subtitle {
-        text-align: center;
-        font-size: 1.2rem;
-        color: var(--gray);
-        margin-bottom: 4rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .features-grid {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2.5rem;
-    }
-
-    .feature-card {
-        padding: 2.5rem;
-        background: linear-gradient(135deg, #F8FAFC 0%, #E0F7F7 50%, #F8FAFC 100%);
-        border-radius: 20px;
-        text-align: center;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 1px solid transparent;
-    }
-
-    .feature-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 25px 50px rgba(0, 128, 134, 0.12);
-        border-color: rgba(0, 128, 134, 0.12);
-    }
-
-    .feature-icon {
-        font-size: 3rem;
-        margin-bottom: 1.5rem;
-        display: inline-block;
-        animation: pulse 3s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-    }
-
-    .feature-card h3 {
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
-        color: var(--dark);
-    }
-
-    .feature-card p {
-        color: var(--gray);
-        line-height: 1.6;
-    }
-
-    /* Podcast Section */
-    .podcast {
-        padding: 6rem 5%;
-        background: linear-gradient(135deg, #F8FAFC 0%, #FEF3C7 100%);
-    }
-
-    .latest-episode {
-        background: white;
-        border-radius: 30px;
-        padding: 3rem;
-        margin-bottom: 4rem;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-        max-width: 1000px;
-        margin-left: auto;
-        margin-right: auto;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .latest-badge {
-        display: inline-block;
-        padding: 0.5rem 1.5rem;
-        background: var(--gradient-accent);
-        color: white;
-        border-radius: 50px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        margin-bottom: 1.5rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    .episode-title {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        color: var(--dark);
-    }
-
-    .episode-description {
-        color: var(--gray);
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-        line-height: 1.7;
-    }
-
-    .audio-player {
-        background: linear-gradient(135deg, #F8FAFC 0%, #E0F7F7 100%);
-        border-radius: 15px;
-        padding: 2rem;
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-    }
-
-    .play-btn {
-        width: 60px;
-        height: 60px;
-        background: var(--gradient-primary);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.5rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: none;
-        flex-shrink: 0;
-    }
-
-    .play-btn:hover {
-        transform: scale(1.1);
-        box-shadow: 0 10px 30px rgba(0, 128, 134, 0.26);
-    }
-
-    .audio-info {
-        flex: 1;
-    }
-
-    .audio-progress {
-        height: 6px;
-        background: rgba(0, 0, 0, 0.1);
-        border-radius: 3px;
-        margin-bottom: 0.5rem;
-        overflow: hidden;
-    }
-
-    .progress-bar {
-        height: 100%;
-        background: var(--gradient-primary);
-        width: 35%;
-        border-radius: 3px;
-        transition: width 0.3s ease;
-    }
-
-    .audio-time {
-        font-size: 0.9rem;
-        color: var(--gray);
-    }
-
-    .episodes-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .episode-card {
-        background: white;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
-        cursor: pointer;
-    }
-
-    .episode-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-    }
-
-    .episode-header {
-        padding: 2rem;
-        background: var(--gradient-primary);
-        color: white;
-    }
-
-    .episode-number {
-        font-size: 0.9rem;
-        opacity: 0.9;
-        margin-bottom: 0.5rem;
-    }
-
-    .episode-card-title {
-        font-size: 1.3rem;
-        font-weight: 700;
-    }
-
-    .episode-content {
-        padding: 1.5rem 2rem;
-    }
-
-    .episode-card p {
-        color: var(--gray);
-        margin-bottom: 1rem;
-    }
-
-    .listen-link {
-        color: var(--primary);
-        text-decoration: none;
-        font-weight: 600;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: gap 0.3s ease;
-    }
-
-    .listen-link:hover {
-        gap: 1rem;
-    }
-
-    /* Guest Section */
-    .guest-section {
-        padding: 6rem 5%;
-        background: white;
-        text-align: center;
-    }
-
-    .guest-benefits {
-        max-width: 1200px;
-        margin: 3rem auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-    }
-
-    .benefit-card {
-        padding: 2rem;
-        background: linear-gradient(135deg, #F8FAFC 0%, #E0F7F7 100%);
-        border-radius: 15px;
-        transition: all 0.3s ease;
-    }
-
-    .benefit-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 35px rgba(0, 128, 134, 0.12);
-    }
-
-    .benefit-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-    }
-
-    /* Contact Section */
-    .contact {
-        padding: 6rem 5%;
-        background: var(--gradient-dark);
-        color: white;
-    }
-
-    .contact-content {
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    .contact-content h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .contact-content p {
-        font-size: 1.2rem;
-        margin-bottom: 3rem;
-        opacity: 0.9;
-    }
-
-    .contact-form {
-        background: rgba(255, 255, 255, 0.05);
-        padding: 3rem;
-        border-radius: 20px;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .form-group {
-        margin-bottom: 1.5rem;
-        text-align: left;
-    }
-
-    .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-        color: rgba(255, 255, 255, 0.9);
-    }
-
-    .form-group input,
-    .form-group textarea {
-        width: 100%;
-        padding: 1rem;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 10px;
-        font-size: 1rem;
-        color: white;
-        transition: all 0.3s ease;
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-        color: rgba(255, 255, 255, 0.5);
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-        outline: none;
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.4);
-    }
-
-    .submit-button {
-        width: 100%;
-        padding: 1.2rem;
-        background: var(--gradient-primary);
-        color: white;
-        border: none;
-        border-radius: 50px;
-        font-size: 1.1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .submit-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 15px 35px rgba(0, 128, 134, 0.22);
-    }
-
-    .contact-info {
-        margin-top: 3rem;
-        padding-top: 2rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    /* Footer */
-    footer {
-        padding: 3rem 5%;
-        background: #0A0A14;
-        color: rgba(255, 255, 255, 0.7);
-        text-align: center;
-    }
-
-    .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .footer-links {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin-bottom: 2rem;
-    }
-
-    .footer-links a {
-        color: rgba(255, 255, 255, 0.7);
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .footer-links a:hover {
-        color: white;
-    }
-
-    /* Animations */
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-        .nav-links {
-            display: none;
-        }
-
-        .about-content {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .stats-container {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .hero h1 {
-            font-size: 2rem;
-        }
-
-        .cta-container {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .episodes-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scale It Up - AI Solutions Through Expert Conversations</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/Favicon.png">
+
+  <style>
+    :root {
+      --primary: #0077ff;
+      --gray: #555;
+      --light-gray: #f4f4f4;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #222;
+    }
+    /* Navigation */
+    nav {
+      background: #fff;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo img {
+      height: 50px;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #222;
+      font-weight: bold;
+    }
+    .nav-links .nav-cta {
+      color: #fff;
+      background: var(--primary);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+    }
+    /* Hero */
+    .hero {
+      background: var(--light-gray);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .cta-button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    /* Section basics */
+    section {
+      padding: 4rem 2rem;
+    }
+    .contact a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <!-- Logo image (place ScaleItUp.png in same folder as this HTML) -->
-                <img src="ScaleItUp.png" alt="Scale It Up logo" class="logo-img" />
-                <span class="logo-text">Scale It Up</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#podcast">Podcast</a></li>
-                <li><a href="#guest">Be a Guest</a></li>
-                <!-- Nav CTA now goes to Calendly -->
-                <li><a href="https://calendly.com/chris-scaleitup/30min" target="_blank" rel="noopener noreferrer" class="nav-cta">Book a Call</a></li>
-            </ul>
-        </div>
-    </nav>
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="#home">
+          <img src="images/ScaleItUp.png" alt="Scale It Up Logo">
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="https://feeds.buzzsprout.com/2536274.rss" target="_blank">Podcast</a></li>
+        <li><a href="#guest">Be a Guest</a></li>
+        <li><a href="https://calendly.com/chris-scaleitup/30min" target="_blank" class="nav-cta">Book a Call</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<!-- Hero Section -->
-<section id="home" class="hero">
-    <div class="animated-bg">
-        <div class="bg-circle"></div>
-        <div class="bg-circle"></div>
-        <div class="bg-circle"></div>
-    </div>
-    
-    <div class="hero-content">
-        <h1>Transform Your Business with AI</h1>
-        <p class="tagline">Discover the perfect AI solutions through engaging conversations and expert interviews with businesses just like yours</p>
-        <div class="cta-container">
-            <!-- Hero CTA now opens Calendly in a new tab -->
-            <a href="https://calendly.com/chris-scaleitup/30min" target="_blank" rel="noopener noreferrer" class="cta-button">Book Your Free Strategy Call</a>
-            <a href="#podcast" class="cta-button cta-secondary">Listen to Success Stories</a>
-        </div>
-    </div>
-</section>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>AI Solutions Through Expert Conversations</h1>
+      <p>Join Chris in exploring how AI is transforming industries through expert insights and practical strategies.</p>
+      <a href="https://calendly.com/chris-scaleitup/30min" target="_blank" class="cta-button">Schedule a Time</a>
+    </div>
+  </section>
 
-<!-- Stats Bar -->
-<section class="stats-bar">
-    <div class="stats-container">
-        <div class="stat-item">
-            <div class="stat-number">100+</div>
-            <div class="stat-label">Businesses Transformed</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">$500M+</div>
-            <div class="stat-label">Managed Growth</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">15+</div>
-            <div class="stat-label">Years Experience</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">3x</div>
-            <div class="stat-label">Average ROI</div>
-        </div>
-    </div>
-</section>
+  <!-- Stats Bar -->
+  <section class="stats-bar">
+    <h2>Trusted by Businesses Exploring AI</h2>
+    <!-- Your stats content here -->
+  </section>
 
-<!-- About Section -->
-<section id="about" class="about">
-    <div class="about-content">
-        <div class="about-text">
-            <h2>About Scale It Up</h2>
-            <p>
-                At Scale It Up, we believe every business deserves to harness the power of AI, regardless of technical expertise. Through our unique podcast and interview approach, we connect you with real businesses that have successfully implemented AI solutions.
-            </p>
-            <p>
-                We make AI implementation simple and accessible. By learning from real-world success stories and expert insights, you'll discover exactly which AI tools can transform your specific business challenges into competitive advantages.
-            </p>
-            <p>
-                Our mission is straightforward: help businesses increase revenue, improve efficiency, reduce overhead, and boost competitiveness through smart AI adoption.
-            </p>
-        </div>
-        <div class="about-visual">
-            <div class="expertise-card">
-                <div style="width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1.5rem; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
-                    CC
-                </div>
-                <h3>Chris Carrera</h3>
-                <p>Founder & AI Strategy Expert</p>
-                <div class="credentials">
-                    <div class="credential-item">
-                        <span>✓</span>
-                        <span>Led $500M+ in enterprise accounts</span>
-                    </div>
-                    <div class="credential-item">
-                        <span>✓</span>
-                        <span>Top solar industry executive</span>
-                    </div>
-                    <div class="credential-item">
-                        <span>✓</span>
-                        <span>AI implementation specialist</span>
-                    </div>
-                    <div class="credential-item">
-                        <span>✓</span>
-                        <span>Based in NH/MA region</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2>About</h2>
+    <p>Scale It Up is dedicated to uncovering how businesses can grow using AI tools. Hosted by Chris, we bring expert guests to discuss real strategies and results.</p>
+  </section>
 
-<!-- Features Section -->
-<section class="features">
-    <h2 class="section-title">Why Choose Scale It Up?</h2>
-    <p class="section-subtitle">We help businesses shatter their goals through strategic AI implementation</p>
-    <div class="features-grid">
-        <div class="feature-card">
-            <div class="feature-icon"> </div>
-            <h3>Increase Revenue</h3>
-            <p>Unlock new income streams and boost your bottom line with AI-powered solutions tailored to your industry</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon"> </div>
-            <h3>Improve Efficiency</h3>
-            <p>Automate repetitive tasks and streamline operations to focus on what truly matters - growth</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon"> </div>
-            <h3>Reduce Overhead</h3>
-            <p>Cut unnecessary costs while maintaining or improving quality through intelligent automation</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon"> </div>
-            <h3>Boost Competitiveness</h3>
-            <p>Stay ahead of the curve with cutting-edge AI technologies that give you the competitive edge</p>
-        </div>
-    </div>
-</section>
+  <!-- Features Section -->
+  <section class="features">
+    <h2>What We Offer</h2>
+    <ul>
+      <li>Expert interviews on AI applications</li>
+      <li>Practical tools and strategies</li>
+      <li>Insights for scaling businesses</li>
+    </ul>
+  </section>
 
-<!-- Podcast Section -->
-<section id="podcast" class="podcast">
-    <h2 class="section-title">Latest Podcast Episodes</h2>
-    <p class="section-subtitle">Real conversations with real businesses achieving real results</p>
-    
-    <div class="latest-episode">
-        <span class="latest-badge"> Latest Episode</span>
-        <h3 class="episode-title">How a Local Manufacturer Increased Productivity by 300% with AI</h3>
-        <p class="episode-description">
-            In this week's episode, we dive deep into the transformation story of New England Manufacturing Co., 
-            exploring how they implemented AI-driven quality control and predictive maintenance to revolutionize their operations.
-        </p>
-        <div class="audio-player">
-            <button class="play-btn"> </button>
-            <div class="audio-info">
-                <div class="audio-progress">
-                    <div class="progress-bar"></div>
-                </div>
-                <div class="audio-time">12:45 / 35:20</div>
-            </div>
-        </div>
-    </div>
+  <!-- Podcast Section -->
+  <section id="podcast" class="podcast">
+    <h2>Podcast</h2>
+    <p>Check out our latest episodes on AI-driven growth strategies.</p>
+    <a href="https://feeds.buzzsprout.com/2536274.rss" target="_blank" class="cta-button">Listen Now</a>
+  </section>
 
-    <div class="episodes-grid">
-        <div class="episode-card">
-            <div class="episode-header">
-                <div class="episode-number">Episode 12</div>
-                <div class="episode-card-title">AI for Small Retail: A Success Story</div>
-            </div>
-            <div class="episode-content">
-                <p>Discover how local shops are using AI to compete with big chains and win</p>
-                <a href="#" class="listen-link">Listen Now →</a>
-            </div>
-        </div>
-        <div class="episode-card">
-            <div class="episode-header">
-                <div class="episode-number">Episode 11</div>
-                <div class="episode-card-title">Automating Customer Support</div>
-            </div>
-            <div class="episode-content">
-                <p>Learn how to provide 24/7 support without increasing your staff</p>
-                <a href="#" class="listen-link">Listen Now →</a>
-            </div>
-        </div>
-        <div class="episode-card">
-            <div class="episode-header">
-                <div class="episode-number">Episode 10</div>
-                <div class="episode-card-title">Solar Industry Meets AI</div>
-            </div>
-            <div class="episode-content">
-                <p>How renewable energy companies are leveraging AI for explosive growth</p>
-                <a href="#" class="listen-link">Listen Now →</a>
-            </div>
-        </div>
-    </div>
-</section>
+  <!-- Be a Guest Section -->
+  <section id="guest" class="guest-section">
+    <h2>Be a Guest</h2>
+    <p>Have a unique perspective on AI in business? Apply to be a guest on the Scale It Up podcast.</p>
+    <a href="mailto:Chris@ScaleItUp.org" class="cta-button">Apply Now</a>
+  </section>
 
-<!-- Be a Guest Section -->
-<section id="guest" class="guest-section">
-    <h2 class="section-title">Share Your Story on Scale It Up</h2>
-    <p class="section-subtitle">Join our podcast and inspire other business leaders</p>
-    
-    <div class="guest-benefits">
-        <div class="benefit-card">
-            <div class="benefit-icon"> </div>
-            <h3>Share Your Expertise</h3>
-            <p>Showcase your business journey and AI success story</p>
-        </div>
-        <div class="benefit-card">
-            <div class="benefit-icon"> </div>
-            <h3>Network & Connect</h3>
-            <p>Build relationships with other innovative business leaders</p>
-        </div>
-        <div class="benefit-card">
-            <div class="benefit-icon"> </div>
-            <h3>Grow Your Brand</h3>
-            <p>Increase your visibility and establish thought leadership</p>
-        </div>
-        <div class="benefit-card">
-            <div class="benefit-icon"> </div>
-            <h3>Free Consultation</h3>
-            <p>Receive personalized AI strategy insights for your business</p>
-        </div>
-    </div>
-    
-    <a href="#contact" class="cta-button" style="margin-top: 2rem;">Apply to Be a Guest</a>
-</section>
-
-<!-- Contact Section -->
-<section id="contact" class="contact">
-    <div class="contact-content">
-        <h2>Let's Scale It Up Together</h2>
-        <p>Ready to discover how AI can transform your business? Let's have a conversation.</p>
-        
-        <form class="contact-form">
-            <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" placeholder="John Smith" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="john@company.com" required>
-            </div>
-            <div class="form-group">
-                <label for="business">Business Name</label>
-                <input type="text" id="business" placeholder="Your Company Name">
-            </div>
-            <div class="form-group">
-                <label for="message">Tell Us About Your Challenge</label>
-                <textarea id="message" rows="4" placeholder="What business challenges are you looking to solve with AI?"></textarea>
-            </div>
-            <button type="submit" class="submit-button">Book Your Free Strategy Call</button>
-        </form>
-        
-        <div class="contact-info">
-            <p>Or reach out directly at:</p>
-            <p style="font-size: 1.2rem; margin-top: 0.5rem;">
-                <strong><a href="mailto:Chris@ScaleItUp.org" style="color: white; text-decoration: underline;">Chris@ScaleItUp.org</a></strong>
-            </p>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer>
-    <div class="footer-content">
-        <div class="footer-links">
-            <a href="#about">About</a>
-            <a href="#podcast">Podcast</a>
-            <a href="#guest">Be a Guest</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <p>&copy; 2024 Scale It Up. Making AI Simple for Every Business. | <a href="mailto:Chris@ScaleItUp.org" style="color: inherit;">Chris@ScaleItUp.org</a></p>
-    </div>
-</footer>
-
-<script>
-    // Smooth scrolling for navigation links (only anchors starting with #)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            // If the link's href is an in-page anchor, scroll smoothly.
-            // External links (calendly) are not intercepted.
-            const href = this.getAttribute('href');
-            if (href && href.startsWith('#')) {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            }
-        });
-    });
-
-    // Navbar scroll effect
-    window.addEventListener('scroll', () => {
-        const navbar = document.getElementById('navbar');
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
-    // Form submission handler
-    document.querySelector('.contact-form').addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Thank you for your interest! We\\'ll be in touch within 24 hours to schedule your strategy call.');
-        e.target.reset();
-    });
-
-    // Play button handler
-    document.querySelector('.play-btn').addEventListener('click', function() {
-        if (this.innerHTML === ' ') {
-            this.innerHTML = '❚❚';
-            alert('Episode player coming soon! Subscribe to get notified when new episodes are available.');
-        } else {
-            this.innerHTML = ' ';
-        }
-    });
-
-    // Listen link handlers
-    document.querySelectorAll('.listen-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Full podcast library coming soon! Book a call to get early access.');
-        });
-    });
-
-    // Animate numbers on scroll
-    const animateValue = (element, start, end, duration) => {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            element.innerHTML = Math.floor(progress * (end - start) + start);
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            } else {
-                // Add back any suffix
-                const suffix = element.getAttribute('data-suffix') || '';
-                element.innerHTML = end + suffix;
-            }
-        };
-        window.requestAnimationFrame(step);
-    };
-
-    // Observer for stat animations
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                entry.target.classList.add('animated');
-                const statNumbers = entry.target.querySelectorAll('.stat-number');
-                statNumbers.forEach(stat => {
-                    const text = stat.innerText;
-                    if (text.includes('+')) {
-                        const num = parseInt(text.replace(/\D/g, ''));
-                        stat.setAttribute('data-suffix', '+');
-                        animateValue(stat, 0, num, 2000);
-                    } else if (text.includes('x')) {
-                        stat.innerText = text; // Keep as is for multipliers
-                    } else if (text.includes('$')) {
-                        stat.innerText = text; // Keep as is for dollar amounts
-                    } else {
-                        const num = parseInt(text);
-                        animateValue(stat, 0, num, 2000);
-                    }
-                });
-            }
-        });
-    }, { threshold: 0.5 });
-
-    const statsSection = document.querySelector('.stats-bar');
-    if (statsSection) {
-        statsObserver.observe(statsSection);
-    }
-
-    // Add subtle parallax effect to hero background
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const parallax = document.querySelector('.animated-bg');
-        if (parallax) {
-            parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
-        }
-    });
-</script>
-
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>For inquiries, reach out via email or book a time with me directly.</p>
+    <p>Email: <a href="mailto:Chris@ScaleItUp.org">Chris@ScaleItUp.org</a></p>
+    <a href="https://calendly.com/chris-scaleitup/30min" target="_blank" class="cta-button">Book a Call</a>
+  </section>
 </body>
 </html>
