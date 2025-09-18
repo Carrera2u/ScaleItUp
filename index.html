@@ -6,7 +6,10 @@
   <title>Scale It Up - AI Solutions Through Expert Conversations</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="png" href="Favicon.png">
+  <link rel="icon" type="image/png" href="Favicon.png">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -14,11 +17,14 @@
       --gray: #555;
       --light-gray: #f4f4f4;
     }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', Arial, sans-serif;
       color: #222;
+      line-height: 1.6;
     }
+
     /* Navigation */
     nav {
       background: #fff;
@@ -28,14 +34,17 @@
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
+
     .nav-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
+
     .logo img {
       height: 50px;
     }
+
     .nav-links {
       list-style: none;
       display: flex;
@@ -43,23 +52,45 @@
       margin: 0;
       padding: 0;
     }
+
     .nav-links a {
       text-decoration: none;
       color: #222;
-      font-weight: bold;
+      font-weight: 600;
+      transition: color 0.3s;
     }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
     .nav-links .nav-cta {
       color: #fff;
       background: var(--primary);
       padding: 0.5rem 1rem;
       border-radius: 5px;
     }
+
     /* Hero */
     .hero {
       background: var(--light-gray);
-      padding: 4rem 2rem;
+      padding: 6rem 2rem;
       text-align: center;
     }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .cta-button {
       display: inline-block;
       margin-top: 1rem;
@@ -68,14 +99,40 @@
       color: #fff;
       border-radius: 5px;
       text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
     }
+
+    .cta-button:hover {
+      background: #005fcc;
+    }
+
     /* Section basics */
     section {
       padding: 4rem 2rem;
     }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    .features ul {
+      list-style-type: disc;
+      margin-left: 2rem;
+    }
+
     .contact a {
       color: var(--primary);
       text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -85,7 +142,7 @@
     <div class="nav-container">
       <div class="logo">
         <a href="#home">
-          <img src="images/ScaleItUp.png" alt="Scale It Up Logo">
+          <img src="ScaleItUp.png" alt="Scale It Up Logo">
         </a>
       </div>
       <ul class="nav-links">
